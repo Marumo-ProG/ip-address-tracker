@@ -8,13 +8,18 @@ import SearchComponent from "./components/SearchComponent";
 import IpAddressSummary from "./components/IpAddressSummary";
 import Map from "./components/Map";
 
+// images
+import background from "../../images/background.jpg";
+
 const Overview = () => {
   return (
     <Container fluid style={{ height: "100vh" }}>
       <Container
         fluid
         style={{
-          backgroundColor: "#999",
+          backgroundImage: `url(${background})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
           height: 200,
           minHeight: 200,
           display: "flex",
