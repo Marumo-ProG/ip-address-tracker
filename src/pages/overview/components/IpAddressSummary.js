@@ -11,14 +11,14 @@ const IpAddressSummary = () => {
       style={{
         height: 125,
         width: "80%",
-        backgroundColor: "green",
+        backgroundColor: "white",
         position: "absolute",
         top: 136,
         borderRadius: "20px",
         padding: "16px",
         display: "flex",
         justifyContent: "space-between",
-        //alignItems: "start",
+        zIndex: 1000,
       }}
     >
       <SummaryItem title={"IP ADDRESS"} value={"192.186.1.8"} />

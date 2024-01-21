@@ -1,9 +1,12 @@
+// React
+
 // Semantic UI
 import { Container, Header } from "semantic-ui-react";
 
 // Components
 import SearchComponent from "./components/SearchComponent";
 import IpAddressSummary from "./components/IpAddressSummary";
+import Map from "./components/Map";
 
 const Overview = () => {
   return (
@@ -29,6 +32,7 @@ const Overview = () => {
         <SearchComponent />
         <IpAddressSummary />
       </Container>
+      <Map />
     </Container>
   );
 };
