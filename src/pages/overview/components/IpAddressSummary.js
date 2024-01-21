@@ -19,6 +19,7 @@ const IpAddressSummary = () => {
         display: "flex",
         justifyContent: "space-between",
         zIndex: 1000,
+        boxShadow: "3px 3px 5px  #999",
       }}
     >
       <SummaryItem title={"IP ADDRESS"} value={"192.186.1.8"} />
