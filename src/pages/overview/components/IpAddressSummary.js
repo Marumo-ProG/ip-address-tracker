@@ -5,14 +5,13 @@ import { useContext } from "react";
 import { IpContext } from "../../../App";
 
 // Semantic UI
-import { Container, Header, Loader } from "semantic-ui-react";
+import { Container, Loader } from "semantic-ui-react";
 
 // Components
 import SummaryItem from "./SummaryItem";
 
 const IpAddressSummary = () => {
   const ipInfo = useContext(IpContext);
-  console.log(ipInfo);
   return (
     <Container
       fluid
