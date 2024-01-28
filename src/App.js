@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     axios
       .get(
-        "https://geo.ipify.org/api/v2/country?apiKey=at_B2BKi8JiO2uEplXOF6eHiBmK4SbPp"
+        "https://geo.ipify.org/api/v2/country,city?apiKey=at_B2BKi8JiO2uEplXOF6eHiBmK4SbPp"
       )
       .then((res) => {
         setIpInfo(res.data);

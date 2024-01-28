@@ -1,10 +1,17 @@
+// React
+import { useContext } from "react";
+
+// Context
+import { IpContext } from "../../../App";
+
 // Semantic UI
-import { Container } from "semantic-ui-react";
+import { Container, Loader } from "semantic-ui-react";
 
 // Leaflet Map
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 const Map = () => {
+  const ipInfo = useContext(IpContext);
   return (
     <Container
       fluid
@@ -15,19 +22,33 @@ const Map = () => {
         zIndex: 0,
       }}
     >
-      <MapContainer
-        center={[51.505, -0.09]}
-        zoom={13}
-        style={{ height: "100%", width: "100%" }}
-      >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution="© OpenStreetMap contributors"
-        />
-        <Marker position={[51.505, -0.09]}>
-          <Popup>A sample popup.</Popup>
-        </Marker>
-      </MapContainer>
+      {ipInfo.ip ? (
+        <MapContainer
+          center={[ipInfo.location.lat, ipInfo.location.lng]}
+          zoom={13}
+          style={{ height: "100%", width: "100%" }}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution="© OpenStreetMap contributors"
+          />
+          <Marker position={[ipInfo.location.lat, ipInfo.location.lng]}>
+            <Popup>A sample popup.</Popup>
+          </Marker>
+        </MapContainer>
+      ) : (
+        <div
+          style={{
+            height: "100%",
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Loader active inline={"centered"} />
+        </div>
+      )}
     </Container>
   );
 };
