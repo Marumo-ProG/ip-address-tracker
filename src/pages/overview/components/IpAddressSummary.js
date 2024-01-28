@@ -1,3 +1,9 @@
+// React
+import { useContext } from "react";
+
+// Context
+import { IpContext } from "../../../App";
+
 // Semantic UI
 import { Container, Header } from "semantic-ui-react";
 
@@ -5,6 +11,7 @@ import { Container, Header } from "semantic-ui-react";
 import SummaryItem from "./SummaryItem";
 
 const IpAddressSummary = () => {
+  const ipInfo = useContext(IpContext);
   return (
     <Container
       fluid
@@ -22,10 +29,13 @@ const IpAddressSummary = () => {
         boxShadow: "3px 3px 5px  #999",
       }}
     >
-      <SummaryItem title={"IP ADDRESS"} value={"192.186.1.8"} />
-      <SummaryItem title={"LOCATION"} value={"227 Minnar Street, Central"} />
-      <SummaryItem title={"TIME ZONE"} value={"SAT Cape Town"} />
-      <SummaryItem title={"ISP"} value={"MTN South Africa"} />
+      <SummaryItem title={"IP ADDRESS"} value={ipInfo.ip} />
+      <SummaryItem
+        title={"LOCATION"}
+        value={ipInfo.location.region + ", " + ipInfo.location.country}
+      />
+      <SummaryItem title={"TIME ZONE"} value={ipInfo.location.timezone} />
+      <SummaryItem title={"ISP"} value={ipInfo.isp} />
     </Container>
   );
 };
