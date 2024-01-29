@@ -11,7 +11,7 @@ import { Container, Loader } from "semantic-ui-react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 const Map = () => {
-  const ipInfo = useContext(IpContext);
+  const { ipInfo } = useContext(IpContext);
   return (
     <Container
       fluid

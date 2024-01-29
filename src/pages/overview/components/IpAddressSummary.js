@@ -11,7 +11,7 @@ import { Container, Loader } from "semantic-ui-react";
 import SummaryItem from "./SummaryItem";
 
 const IpAddressSummary = () => {
-  const ipInfo = useContext(IpContext);
+  const { ipInfo } = useContext(IpContext);
   return (
     <Container
       fluid

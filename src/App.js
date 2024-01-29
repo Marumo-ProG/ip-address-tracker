@@ -25,7 +25,7 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <IpContext.Provider value={ipInfo}>
+    <IpContext.Provider value={{ ipInfo, setIpInfo }}>
       <Overview />
     </IpContext.Provider>
   );
