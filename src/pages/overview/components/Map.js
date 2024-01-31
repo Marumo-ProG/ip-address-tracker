@@ -1,5 +1,5 @@
 // React
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 
 // Context
 import { IpContext } from "../../../App";
@@ -12,6 +12,15 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 const Map = () => {
   const { ipInfo } = useContext(IpContext);
+  const [mapInfo, setMapInfo] = useState([
+    ipInfo.location.lat,
+    ipInfo.location.lng,
+  ]);
+
+  useEffect(() => {
+    setMapInfo([ipInfo.location.lat, ipInfo.location.lng]);
+  }, [ipInfo]);
+
   return (
     <Container
       fluid
@@ -24,7 +33,7 @@ const Map = () => {
     >
       {ipInfo.ip ? (
         <MapContainer
-          center={[ipInfo.location.lat, ipInfo.location.lng]}
+          center={mapInfo}
           zoom={13}
           style={{ height: "100%", width: "100%" }}
         >
@@ -32,7 +41,7 @@ const Map = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="© OpenStreetMap contributors"
           />
-          <Marker position={[ipInfo.location.lat, ipInfo.location.lng]}>
+          <Marker position={mapInfo}>
             <Popup>A sample popup.</Popup>
           </Marker>
         </MapContainer>
