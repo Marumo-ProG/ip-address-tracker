@@ -11,9 +11,8 @@ import { IpContext } from "../../../App";
 import { Input, Button } from "semantic-ui-react";
 
 const SearchComponent = () => {
-  const { ipInfo, setIpInfo } = useContext(IpContext);
+  const { setIpInfo, isLoading, setIsLoading } = useContext(IpContext);
   const [searchValue, setSearchValue] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleSearch = () => {
     setIsLoading(true);

@@ -14,6 +14,8 @@ function App() {
   // making get request to get an IP adress information on location
 
   const [ipInfo, setIpInfo] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     axios
       .get(
@@ -21,11 +23,16 @@ function App() {
       )
       .then((res) => {
         setIpInfo(res.data);
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
+
+  useEffect(() => {
+    console.log("ip changed");
+  }, [ipInfo]);
   return (
-    <IpContext.Provider value={{ ipInfo, setIpInfo }}>
+    <IpContext.Provider value={{ ipInfo, setIpInfo, isLoading, setIsLoading }}>
       <Overview />
     </IpContext.Provider>
   );

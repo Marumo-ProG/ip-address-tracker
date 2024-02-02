@@ -11,16 +11,7 @@ import { Container, Loader } from "semantic-ui-react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
 const Map = () => {
-  const { ipInfo } = useContext(IpContext);
-  const [mapInfo, setMapInfo] = useState([
-    ipInfo.location.lat,
-    ipInfo.location.lng,
-  ]);
-
-  useEffect(() => {
-    setMapInfo([ipInfo.location.lat, ipInfo.location.lng]);
-  }, [ipInfo]);
-
+  const { ipInfo, isLoading } = useContext(IpContext);
   return (
     <Container
       fluid
@@ -31,9 +22,10 @@ const Map = () => {
         zIndex: 0,
       }}
     >
-      {ipInfo.ip ? (
+      {!isLoading ? (
         <MapContainer
-          center={mapInfo}
+          key={ipInfo.location.lat.toString()}
+          center={[ipInfo.location.lat, ipInfo.location.lng]}
           zoom={13}
           style={{ height: "100%", width: "100%" }}
         >
@@ -41,7 +33,7 @@ const Map = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="© OpenStreetMap contributors"
           />
-          <Marker position={mapInfo}>
+          <Marker position={[ipInfo.location.lat, ipInfo.location.lng]}>
             <Popup>A sample popup.</Popup>
           </Marker>
         </MapContainer>
