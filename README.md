@@ -9,7 +9,7 @@ Please note: it is not always accurate as it only tracks the IP address
 
 - first start by installing the dependencies in the root folder
 ```bash
-npm install foobar
+npm install
 ```
 
 - run the application using the npm start
